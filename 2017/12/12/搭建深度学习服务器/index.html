@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="清单https://docs.google.com/spreadsheets/d/e/2PACX-1vTM1Tr2jFAygDWZ-PvWWxVz1mCt7P1g62XzA9lv8OTd9GUukGo4rAq-uu0z78TKZ9uFA0bNwslY2An2/pubhtml    类型 型号 数量 总价/元 购买链接 型号     机箱 Corsair 540 1 929 https://item">
+<meta name="keywords" content="装机">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建深度学习服务器">
+<meta property="og:url" content="http://qqdaiyu55.github.io/2017/12/12/搭建深度学习服务器/index.html">
+<meta property="og:site_name" content="Mr.Thunder">
+<meta property="og:description" content="清单https://docs.google.com/spreadsheets/d/e/2PACX-1vTM1Tr2jFAygDWZ-PvWWxVz1mCt7P1g62XzA9lv8OTd9GUukGo4rAq-uu0z78TKZ9uFA0bNwslY2An2/pubhtml    类型 型号 数量 总价/元 购买链接 型号     机箱 Corsair 540 1 929 https://item">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-03-12T11:22:55.772Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搭建深度学习服务器">
+<meta name="twitter:description" content="清单https://docs.google.com/spreadsheets/d/e/2PACX-1vTM1Tr2jFAygDWZ-PvWWxVz1mCt7P1g62XzA9lv8OTd9GUukGo4rAq-uu0z78TKZ9uFA0bNwslY2An2/pubhtml    类型 型号 数量 总价/元 购买链接 型号     机箱 Corsair 540 1 929 https://item">
+
+
+
+
+
+
+  <link rel="canonical" href="http://qqdaiyu55.github.io/2017/12/12/搭建深度学习服务器/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>搭建深度学习服务器 | Mr.Thunder</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72707845-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-72707845-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Thunder</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qqdaiyu55.github.io/2017/12/12/搭建深度学习服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="daiyu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Thunder">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">搭建深度学习服务器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-12-12 12:52:34" itemprop="dateCreated datePublished" datetime="2017-12-12T12:52:34+08:00">2017-12-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-03-12 19:22:55" itemprop="dateModified" datetime="2018-03-12T19:22:55+08:00">2018-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="清单"><a href="#清单" class="headerlink" title="清单"></a>清单</h3><p><a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTM1Tr2jFAygDWZ-PvWWxVz1mCt7P1g62XzA9lv8OTd9GUukGo4rAq-uu0z78TKZ9uFA0bNwslY2An2/pubhtml" target="_blank" rel="noopener">https://docs.google.com/spreadsheets/d/e/2PACX-1vTM1Tr2jFAygDWZ-PvWWxVz1mCt7P1g62XzA9lv8OTd9GUukGo4rAq-uu0z78TKZ9uFA0bNwslY2An2/pubhtml</a></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>型号</th>
+<th>数量</th>
+<th>总价/元</th>
+<th>购买链接</th>
+<th>型号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>机箱</td>
+<td>Corsair 540</td>
+<td>1</td>
+<td>929</td>
+<td><a href="https://item.jd.com/12173900062.html" target="_blank" rel="noopener">https://item.jd.com/12173900062.html</a></td>
+<td>黑色</td>
+</tr>
+<tr>
+<td>主板</td>
+<td>Asus x99-e ws</td>
+<td>1</td>
+<td>4298</td>
+<td><a href="https://detail.tmall.com/item.htm?spm=a1z0d.6639537.1997196601.108.3f2605bcpOlPKN&amp;id=529755416204" target="_blank" rel="noopener">https://detail.tmall.com/item.htm?spm=a1z0d.6639537.1997196601.108.3f2605bcpOlPKN&amp;id=529755416204</a></td>
+<td></td>
+</tr>
+<tr>
+<td>电源</td>
+<td>EVGA 1600W 80+ Gold</td>
+<td>1</td>
+<td>2299</td>
+<td><a href="https://item.jd.com/3609960.html" target="_blank" rel="noopener">https://item.jd.com/3609960.html</a></td>
+<td>金牌G2系列，1600W</td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>intel i7 6850k</td>
+<td>1</td>
+<td>3199</td>
+<td><a href="https://detail.tmall.com/item.htm?spm=a230r.1.14.1.7225c2abbBXJ1o&amp;id=532991342338&amp;ns=1&amp;abbucket=2&amp;skuId=3179837038562" target="_blank" rel="noopener">https://detail.tmall.com/item.htm?spm=a230r.1.14.1.7225c2abbBXJ1o&amp;id=532991342338&amp;ns=1&amp;abbucket=2&amp;skuId=3179837038562</a></td>
+<td>官方标配</td>
+</tr>
+<tr>
+<td>散热器</td>
+<td>Corsair H100i v2</td>
+<td>1</td>
+<td>859</td>
+<td><a href="https://item.jd.com/2642112.html" target="_blank" rel="noopener">https://item.jd.com/2642112.html</a></td>
+<td>H100 v2水冷散热(240mm冷排</td>
+</tr>
+<tr>
+<td>硬盘</td>
+<td>WD Blue 6T</td>
+<td>1</td>
+<td>2499</td>
+<td><a href="https://item.jd.com/2041682.html" target="_blank" rel="noopener">https://item.jd.com/2041682.html</a></td>
+<td>金盘 6TB</td>
+</tr>
+<tr>
+<td>SSD</td>
+<td>Samsung 1T 960EVO</td>
+<td>1</td>
+<td>3299</td>
+<td><a href="https://item.jd.com/14114815968.html" target="_blank" rel="noopener">https://item.jd.com/14114815968.html</a></td>
+<td>960EVO M.2, 1T</td>
+</tr>
+<tr>
+<td>GPU</td>
+<td>Gigabyte 1080 Ti Xtreme Edition</td>
+<td>2</td>
+<td>14398</td>
+<td><a href="https://item.jd.com/4729162.html" target="_blank" rel="noopener">https://item.jd.com/4729162.html</a></td>
+<td>1080TI 大雕</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>Kinston Fury 32G 2400 DDR4</td>
+<td>2</td>
+<td>6798</td>
+<td><a href="https://item.jd.com/2551254.html" target="_blank" rel="noopener">https://item.jd.com/2551254.html</a></td>
+<td>D4 2400，套条16G*2</td>
+</tr>
+<tr>
+<td>显卡支架</td>
+<td>乔思伯显卡支架</td>
+<td>1</td>
+<td>59</td>
+<td><a href="https://detail.tmall.com/item.htm?spm=a230r.1.14.1.4aa66e15Oi22zY&amp;id=551596553142&amp;ns=1&amp;abbucket=2&amp;skuId=3536461854613" target="_blank" rel="noopener">https://detail.tmall.com/item.htm?spm=a230r.1.14.1.4aa66e15Oi22zY&amp;id=551596553142&amp;ns=1&amp;abbucket=2&amp;skuId=3536461854613</a></td>
+<td>黑</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>38578</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>这里基本都是按能插4卡来配的，结果发现非公的技嘉显卡太厚了，实际也只能插两块。</p>
+<h3 id="组装"><a href="#组装" class="headerlink" title="组装"></a>组装</h3><p>作为第一次组装的小白，在Google+客服+说明书的帮助下，花了两个下午+1个晚上才搞定，第一次装真心累。</p>
+<p>装机有几点可以提高效率</p>
+<ul>
+<li>可以先看看视频，大略了解下不同部件放的位置与插法。</li>
+</ul>
+<ul>
+<li>确定插法，不要大力出奇迹</li>
+<li>装螺丝可以先装对角</li>
+<li>螺丝先试试小的，再试大的，防止螺丝孔被拧大</li>
+<li>像内存、显卡的槽，等卡扣合上才是插紧的</li>
+<li>如果通电后主板上的开机键没有亮灯，说明没通电。这很有可能是24-pin的主板供电没插紧，或者机箱上线哪里短路了</li>
+</ul>
+<ol>
+<li><p><strong>CPU</strong>: 取出主板，打开主板上cpu槽卡扣，剥离保护壳。轻轻将cpu放入，注意三角形对齐与轻放。卡扣合上时可能有些紧，不用担心，正常情况。这步在主板的说明书上写得很清楚。</p>
+</li>
+<li><p><strong>内存条</strong>: 内存条插槽在cpu槽的两侧，说明书上有写多卡的推荐插法。注意内存条插的方向，插槽上有防呆设计（接近中间位置的一个小凸起），不要大力出奇迹。</p>
+</li>
+<li><p><strong>SSD</strong>: 找到SSD的插槽。x99主板的M.2接口在右下方。先拧开固定螺丝，然后插上SSD后重新拧上固定螺丝。</p>
+</li>
+<li><p><strong>散热器</strong>: 这里以水冷为例子。首先是背板，asus x99-e ws这个主板是不需要装背板的，看看背板上cpu槽部位周围那实心的四个孔就知道了。所以只需要在前部装上散热器里附带的十字型的固定架，注意拧紧螺丝。另外十字形固定架四周的螺丝孔，一般是可以移动的，这样可以更好适配。在cpu上涂硅脂（如果散热头上已经涂了那就不需要再涂了），涂几个点就行了，不用涂满。安装上水冷头，拧紧大头固定螺丝。把散热器的风扇装到它的长方形固定架上，风扇也要注意下装法，一般有logo的是正面，统一风扇出线的一侧。散热器两个风扇的插头不是插主板上，而是插水冷头的其中一条出线。</p>
+</li>
+<li><p><strong>主板装入机箱</strong>: 取出机箱，装上q-shield（主板配件之一，上面有音频控，网口等等）。主板对齐q-shield的控，装上机箱，拧紧螺丝。如果是水冷，还要把散热器固定到机箱上，看说明书是要风扇侧朝机箱内。以corsair 540为例，水冷散热是装在机箱顶部的。</p>
+</li>
+<li><p><strong>HDD</strong>: corsair 540的机械硬盘很好装，它的槽的机箱底侧，取出其中一个槽，然后装上HDD，重新塞入机箱槽中，结束。这步机箱的说明书上有。</p>
+</li>
+<li><p><strong>电源</strong>: 我买的这款EVGA电源是1600W的，重量可想而已。找到机箱上装电源的地方，塞入，固定好。可能会比较难塞，这时候你要检查下有没有卡住之类，有技巧性地用点力了。作为深度学习机子，需要插上的基本电源线是主板供电线，SATA供电线，CPU供电线，VGA供电线（就是显卡供电线）。把电源线穿到机箱的面板侧。</p>
+</li>
+<li><p><strong>接线</strong>: 这部分是大部分新手最蛋疼的。注意所有插头一般都有防呆设计。</p>
+<ul>
+<li>风扇电源线: 看下主板说明书，上面有标注风扇可插的位置。</li>
+<li>水冷散热供电线: 插在cpu旁边的cpu_fan上就行了。</li>
+<li>主板供电线: 24-pin，插槽在x99主板的右侧。</li>
+<li>cpu供电线: 8-pin，插槽在x99主板的上侧。</li>
+<li>前置面板供电线 (机箱前面的电源线，usb线等): 由于没用到音频，我没插音频线。usb3.0的线是8-pin的我记得，插槽在x99主板右部。powsw, resetsw, pow-led的插槽都在x99主板的最右下侧。</li>
+<li>硬盘供电线: corsair 540的硬盘供电线在供电电源侧，在那侧把SATA供电线与硬盘供电线连上就行。</li>
+<li>显卡供电线: 讲到这里，显卡还没插，不用在意。现在的显卡一般需要单独供电，找到显卡上的供电插孔，技嘉1080ti大雕是两个8-pin。但是我的VGA供电线是6-pin+2-pin+6-pin，怎么办呢？为了足够的供电，只能一根6-pin+2-pin对上一根8-pin，所以每个显卡需要接上两根供电线。</li>
+</ul>
+<p>接完线插显卡之前，可以开电源看看灯是不是亮了，风扇转不转，指示数字是不是正常（比如显示00就表示cpu没运作）。</p>
+</li>
+<li><p><strong>显卡</strong>: 这个比较好插，找好插槽插紧就行。然后连上供电线，sli桥接线（如果你装多卡）。非公的显卡比较厚，一卡厚度就能占主板上三个显卡槽，这说明只能插双卡了，虽然我的主板支持4卡… 所以我选择了编号1,5的槽插显卡。如果单卡，插1号卡槽就行。</p>
+</li>
+<li><p><strong>显卡支架</strong>: 虽然买了，但是我看显卡挺稳的，而且机箱空间不怎么够放支架，就懒得放了。</p>
+</li>
+</ol>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a href="http://www.bilibili.com/video/av8536529/" target="_blank" rel="noopener">【极客湾】萌妹子带你装电脑（萌新向）</a></li>
+<li><a href="https://www.youtube.com/watch?v=OAsD1VJjjZE" target="_blank" rel="noopener">Corsair Carbide Series Air 540 Hardware Installation</a></li>
+<li><a href="https://www.youtube.com/watch?v=NLwIytfDzOM&amp;t=330s" target="_blank" rel="noopener">X99 Build Featuring the Corsair Air 540</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/装机/" rel="tag"># 装机</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/08/import-huge-sql-file/" rel="next" title="Import huge sql file">
+                <i class="fa fa-chevron-left"></i> Import huge sql file
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/11/jupyter-notebook-installation-and-settings/" rel="prev" title="Jupyter notebook installation and settings">
+                Jupyter notebook installation and settings <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="daiyu" />
+            
+              <p class="site-author-name" itemprop="name">daiyu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/qqdaiyu55" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="qqdaiyu55@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/qqdaiyu55" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#清单"><span class="nav-number">1.</span> <span class="nav-text">清单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#组装"><span class="nav-number">2.</span> <span class="nav-text">组装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#参考资料"><span class="nav-number">2.1.</span> <span class="nav-text">参考资料</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">daiyu</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

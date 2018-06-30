@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Github Link: https://github.com/soulmachine/machine-learning-cheat-sheet pdf link: machine-learning-cheat-sheet.pdf Language: English 版权归原作者所属，本文只是自己的理解与补充。 Introduction这个概括得很好：Model = Representation">
+<meta name="keywords" content="Machine Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine-Learning-Cheat-Sheet">
+<meta property="og:url" content="http://qqdaiyu55.github.io/2016/08/26/Machine-Learning-Cheat-Sheet/index.html">
+<meta property="og:site_name" content="Mr.Thunder">
+<meta property="og:description" content="Github Link: https://github.com/soulmachine/machine-learning-cheat-sheet pdf link: machine-learning-cheat-sheet.pdf Language: English 版权归原作者所属，本文只是自己的理解与补充。 Introduction这个概括得很好：Model = Representation">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://cos.name/wp-content/uploads/2010/03/m5.png">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Entropy-mutual-information-relative-entropy-relation-diagram.svg/256px-Entropy-mutual-information-relative-entropy-relation-diagram.svg.png">
+<meta property="og:image" content="http://i.imgur.com/xyQm2F2.jpg">
+<meta property="og:updated_time" content="2016-12-01T15:15:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Machine-Learning-Cheat-Sheet">
+<meta name="twitter:description" content="Github Link: https://github.com/soulmachine/machine-learning-cheat-sheet pdf link: machine-learning-cheat-sheet.pdf Language: English 版权归原作者所属，本文只是自己的理解与补充。 Introduction这个概括得很好：Model = Representation">
+<meta name="twitter:image" content="http://cos.name/wp-content/uploads/2010/03/m5.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://qqdaiyu55.github.io/2016/08/26/Machine-Learning-Cheat-Sheet/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Machine-Learning-Cheat-Sheet | Mr.Thunder</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72707845-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-72707845-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Thunder</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qqdaiyu55.github.io/2016/08/26/Machine-Learning-Cheat-Sheet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="daiyu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Thunder">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Machine-Learning-Cheat-Sheet
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-08-26 16:43:33" itemprop="dateCreated datePublished" datetime="2016-08-26T16:43:33+08:00">2016-08-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2016-12-01 23:15:50" itemprop="dateModified" datetime="2016-12-01T23:15:50+08:00">2016-12-01</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Github Link: <a href="https://github.com/soulmachine/machine-learning-cheat-sheet" target="_blank" rel="noopener">https://github.com/soulmachine/machine-learning-cheat-sheet</a></p>
+<p>pdf link: <a href="https://github.com/soulmachine/machine-learning-cheat-sheet/raw/master/machine-learning-cheat-sheet.pdf" target="_blank" rel="noopener">machine-learning-cheat-sheet.pdf</a></p>
+<p>Language: English</p>
+<p>版权归原作者所属，本文只是自己的理解与补充。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>这个概括得很好：<strong>Model = Representation + Evaluation + Optimization</strong></p>
+<a id="more"></a>
+<h2 id="Probability"><a href="#Probability" class="headerlink" title="Probability"></a>Probability</h2><p>几个概念</p>
+<ul>
+<li><p>CDF (Cumulative Distribution Function):<br>$$<br>F(x) \triangleq P(X \leq x)=\begin{cases}<br>\sum_{u \leq x}p(u) &amp; \text{, discrete}\\<br>\int_{-\infty}^{x} f(u)\mathrm{d}u &amp; \text{, continuous}\\<br>\end{cases}<br>$$</p>
+</li>
+<li><p>PMF (Probability Mass Function): 针对离散值而言的概率密度函数</p>
+</li>
+<li><p>PDF (Probability Density Function): 针对连续值而言的概率密度函数</p>
+</li>
+<li><p>Quantiles: 即分位点。</p>
+<p>设CDF $F$的反函数为$F ^{-1}$，则满足$P(X \leqslant \alpha) = \alpha$的$x_{\alpha}$称为$F$的$\alpha$分位点。例如，$F^{-1}(0.5)$为中位点(median)，$F^{-1}(0.25)$为下四分位点(lower quartiles)，$F^{-1}(0.75)$为上四分位点(upper quartiles)</p>
+</li>
+</ul>
+<h3 id="Monte-Carlo-integration"><a href="#Monte-Carlo-integration" class="headerlink" title="Monte Carlo integration"></a>Monte Carlo integration</h3><p>以前的确没留意用 Monte Carlo 方法求定积分。</p>
+<p>以下内容摘自<a href="http://cos.name/2010/03/monte-carlo-method-to-compute-integration/" target="_blank" rel="noopener">http://cos.name/2010/03/monte-carlo-method-to-compute-integration/</a></p>
+<p>求定积分$J=\int_{0}^{1}f(x)dx$的值。</p>
+<p>设$(X,Y)$服从正方形${0 \leq x \leq 1, 0 \leq y \leq 1}$上的均匀分布，则可知$X,Y$分别服从$[0,1]$上的均匀分布，且$X,Y$相互独立。记事件$A={Y \leq f(X)}$，则$A$的概率为<br>$$<br>P(A)=P(Y\leq f(X))=\int_{0}^{1}\int_{0}^{f(x)}dydx=\int_{0}^{1}f(x)dx=J<br>$$<br>即定积分$J$的值就是事件$A$出现的频率。同时，由伯努利大数定律，我们可以用重复试验中$A$出现的频率作为 $p$的估计值。随机投点法示意图如下。</p>
+<p><img src="http://cos.name/wp-content/uploads/2010/03/m5.png" alt=""></p>
+<h3 id="Mutual-information"><a href="#Mutual-information" class="headerlink" title="Mutual information"></a>Mutual information</h3><p>即互信息，指的是两个随机变量之间的关联程度，即给定一个随机变量后，另一个随机变量的不确定性的削弱程度。这是由于<br>$$<br>\begin{eqnarray}<br>\mathbb{I}(X;Y)&amp;=&amp;\mathbb{H}(X)-\mathbb{H}(X|Y)\\<br>               &amp;=&amp;\mathbb{H}(Y)-\mathbb{H}(Y|X)<br>\end{eqnarray}<br>$$<br>证明见<a href="https://en.wikipedia.org/wiki/Mutual_information" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Mutual_information</a></p>
+<p>用一个Venn图可以很好地表示它们的关系</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Entropy-mutual-information-relative-entropy-relation-diagram.svg/256px-Entropy-mutual-information-relative-entropy-relation-diagram.svg.png" alt=""></p>
+<p>红色圈为$H(X)$，蓝色圈为$H(Y)$，两个圈的并集为$H(X,Y)$，交集为$I(X;Y)$。</p>
+<h3 id="Frequentists-vs-Bayesians"><a href="#Frequentists-vs-Bayesians" class="headerlink" title="Frequentists vs. Bayesians"></a>Frequentists vs. Bayesians</h3><p>关于贝叶斯学派和统计学派的对战。</p>
+<blockquote>
+<p>作者：Xiangyu Wang<br>链接：<a href="https://www.zhihu.com/question/20587681/answer/41436978" target="_blank" rel="noopener">https://www.zhihu.com/question/20587681/answer/41436978</a><br>来源：知乎</p>
+<p>频率学派和贝叶斯学派最大的差别其实产生于对参数空间的认知上。所谓参数空间，就是你关心的那个参数可能的取值范围。频率学派（其实就是当年的Fisher）并不关心参数空间的所有细节，他们相信数据都是在这个空间里的”某个“参数值下产生的（虽然你不知道那个值是啥），所以他们的方法论一开始就是从“哪个值最有可能是真实值”这个角度出发的。于是就有了最大似然（maximum likelihood）以及置信区间（confidence interval）这样的东西，你从名字就可以看出来他们关心的就是我有多大把握去圈出那个唯一的真实参数。而贝叶斯学派恰恰相反，他们关心参数空间里的每一个值，因为他们觉得我们又没有上帝视角，怎么可能知道哪个值是真的呢？所以参数空间里的每个值都有可能是真实模型使用的值，区别只是概率不同而已。于是他们才会引入先验分布（prior distribution）和后验分布（posterior distribution）这样的概念来设法找出参数空间上的每个值的概率。最好诠释这种差别的例子就是想象如果你的后验分布是双峰的，频率学派的方法会去选这两个峰当中较高的那一个对应的值作为他们的最好猜测，而贝叶斯学派则会同时报告这两个值，并给出对应的概率。</p>
+</blockquote>
+<p>简而言之，就是频率学派认为真实参数值是定的，去寻找就行。而贝叶斯学派认为参数空间的每个值都可能是真实值，所以只能给出它们作为真实值的概率。频率学派立足于自然角度，或者说是“上帝角度”，而贝叶斯学派立足于观察者角度。</p>
+<p>两个学派除了参数空间的认知差别上，方法上都是可以互相借鉴的，见<a href="https://zhuanlan.zhihu.com/p/20180632" target="_blank" rel="noopener">传统统计与贝叶斯方法：难以逾越的鸿沟？</a>当代学术界批评地最多的仅仅是频率学派里的 Hypothesis testsing 的问题，尤其是对p-value的滥用，如下图Regina Nuzzo女士2014年在<em>Nature</em>杂志上批评p-value滥用的文章。对应与 Hypothesis testing，贝叶斯学派有一套自己的方法，称为<a href="https://en.wikipedia.org/wiki/Bayes_factor" target="_blank" rel="noopener">Beyas Factor</a>，但其同样可能导致<a href="https://en.wikipedia.org/wiki/Multiple_comparisons_problem" target="_blank" rel="noopener">Multiple comparisions problem</a>。</p>
+<p><img src="http://i.imgur.com/xyQm2F2.jpg" alt=""></p>
+<h2 id="Generative-models-for-discrete-data"><a href="#Generative-models-for-discrete-data" class="headerlink" title="Generative models for discrete data"></a>Generative models for discrete data</h2><p>这里引入 Generative Classifier，(注意下公式里的$x$为向量)<br>$$<br>p(y=c|x,\theta)=\dfrac{p(y=c|\theta)p(x|y=c,\theta)}{\sum_{c’}{p(y=c’|\theta)p(x|y=c’,\theta)}}<br>$$<br>讨论$x$的不同分布，例如当特征在给定分类标签下都是独立时，<br>$$<br>p(x|y=c,\theta)=\prod\limits _{j=1}^D p(x _j|y=c, \theta _{jc})<br>$$<br>这就是Naive Bayes Classifier (NBC)。</p>
+<p>提一下<strong>generative classifier</strong>与<strong>discriminative classifier</strong>。<strong>discriminative</strong> learning algorithm倾向于直接学习$p(y|x;\theta)$，它希望能通过一种直接的映射（如从输入空间$\chi$到输出标签$\left { 0,1 \right }$），或者说，找到一个明确的分类边界，logistic regression就是这样的，其$p(y|x;\theta)$为$h _{\theta}(x) = g(\theta ^T x)$。而<strong>generative</strong> learning algorithm则是通过输入与输出来学习联合概率分布$p(x,y)$，然后通过Bayes rules来预测$p(y|x)$。参考<a href="http://cs229.stanford.edu/notes/cs229-notes2.pdf" target="_blank" rel="noopener">CS229 Lecture notes: PART IV Generative Learning algorithms</a>。</p>
+<h3 id="Generative-vs-discriminative-classifiers"><a href="#Generative-vs-discriminative-classifiers" class="headerlink" title="Generative vs discriminative classifiers"></a>Generative vs discriminative classifiers</h3><ul>
+<li><strong>Easy to fit ?</strong> 这点上生成模型更占优。生成模型只需要简单的counting与averaging，如LDA中计算$\mu_0, \mu_1, \Sigma$等。而判决模型则需要则需要解决一些优化问题，如logistic regression</li>
+<li><strong>Fit classes separately ?</strong>在generative classifier中，参数的计算时独立的，如LDA中计算$\mu_0, \mu_1$等，这以为着我们添加更多的类别(classes)时，不需要retrain模型。相对而言，discriminative models中参数是相互影响的，故其添加classes时需要retrain模型</li>
+<li><strong>Handle missing features easily ?</strong> generative classifier 能容易处理特征数据缺失的问题，而discriminative classifier目前没有根本的解决方法</li>
+<li><strong>Can handle unlabeled training data ?</strong> 这个问题是半监督学习(semi-supervised learning)出现的缘由。这方面generative classifier更为擅长(see e.g. , (Lasserre et al. 2006; Liang et al. 2007))</li>
+<li><strong>Symmetric in inputs and outputs ?</strong> 这个问题是能否通过结果来推出可能的输入，对于generative classifier，显然是可以得，计算$p(x|y)$即可，而对于discriminative classifier就不可能了</li>
+<li><strong>Can handle feature preprocessing ?</strong> discriminative classifier允许作数据预处理，如作映射$x \to \phi(x)$，而generative classifier则不行</li>
+<li><strong>Well-calibrated probabilities ?</strong> 由于generative methods预先假设可能是不太合理的，如naive Bayes做了独立同分布假设，不合理的假设会导致差的estimation效果。因此这点上discriminative classifier更占优</li>
+</ul>
+<h2 id="Gaussian-Models"><a href="#Gaussian-Models" class="headerlink" title="Gaussian Models"></a>Gaussian Models</h2><h3 id="Basics"><a href="#Basics" class="headerlink" title="Basics"></a>Basics</h3><p>指出了$(x-\mu)^T \Sigma^{-1} (x - \mu)$可以表示为$\sum\limits_{i=1}^D \dfrac{y _i^2}{\lambda _i}$，在二维情况即为椭圆，长短轴方向由特征向量方向决定。事实上$\sqrt{(x-\mu)^T \Sigma^{-1} (x - \mu)}$称之为<a href="https://en.wikipedia.org/wiki/Mahalanobis_distance" target="_blank" rel="noopener">Mahalanobis distance</a>，用来表示数据的协方差距离，是一种有效的计算两个未知样本集的相似度的方法。它与欧式距离不同的是它考虑到各种特性之间的联系（例如，一条关于身高的信息会带来一条关于体重的信息，因为两者是有关联的）并且是尺度无关的，即独立于测量尺度。</p>
+<h4 id="MLE-for-a-MVN"><a href="#MLE-for-a-MVN" class="headerlink" title="MLE for a MVN"></a>MLE for a MVN</h4><p>最大似然估计：<br>$$<br>\begin{align}<br>\bar{\mu}    &amp; =\dfrac{1}{N}\sum\limits_{i=1}^N x _i \triangleq \bar{x} \\<br>\bar{\Sigma} &amp; =\dfrac{1}{N}\sum\limits_{i=1}^N (x _i-\bar{x})(x _i-\bar{x})^T \\<br>                     &amp; =\dfrac{1}{N}\left(\sum\limits_{i=1}^N x _i x _i^T\right)-\bar{x}\bar{x}^T<br>\end{align}<br>$$</p>
+<h4 id="Maximum-entropy-derivation-of-the-Gaussian"><a href="#Maximum-entropy-derivation-of-the-Gaussian" class="headerlink" title="Maximum entropy derivation of the Gaussian"></a>Maximum entropy derivation of the Gaussian</h4><p>参考：<a href="https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution" target="_blank" rel="noopener">Maximum entropy probability distribution</a></p>
+<p>如果没有外界干扰，随机变量总是趋于无序，在经过足够时间的稳定演化，它应能达到最大程度的熵。多元正态分布是当随机变量有确定均值与协方差时的最大熵模型，这也是为什么自然界大多数分布满足正态分布。</p>
+<p>其熵值为<br>$$<br>\begin{align}<br>h(f) &amp;= -\int _{-\infty}^{\infty} \int _{-\infty}^{\infty} \cdots\int _{-\infty}^{\infty} f(x) lnf(x)dx, \\<br>&amp;= \frac{1}{2} ln((2\pi e) ^n \cdot \left| \Sigma \right|)<br>\end{align}<br>$$</p>
+<h3 id="Gaussian-discriminant-analysis"><a href="#Gaussian-discriminant-analysis" class="headerlink" title="Gaussian discriminant analysis"></a>Gaussian discriminant analysis</h3><p>可参考[CS229 Lecture notes: PART IV Generative Learning algorithms</p>
+<p>当令generative classifier的$p(x|y=c,\theta)=\mathcal{N}(x|\mu _c, \Sigma _c)$，即为高斯分布时，这时的generative learning algorithm称为Gaussian discriminant analysis (GDA)。当为二分类时，$c \in \left {0,1 \right }$，GDA模型为<br>$$<br>\begin{align}<br>y &amp;\sim  Bernoulli(\phi) \\<br>x|y = 0 &amp;\sim \mathcal{N}(\mu _0, \Sigma _0) \\<br>x|y = 1 &amp;\sim \mathcal{N}({\mu _1, \Sigma _ 1})<br>\end {align}<br>$$<br>事实上，<strong>GDA</strong>和<strong>logistic regression</strong>之间有一个有趣的关系。当$\Sigma$一定时（这时候其实称为LDA，后文会提到），<br>$$<br>\begin{align}<br>p(y=1|x) &amp;= \frac{p(y=1)p(x|y=1)}{p(y=1)p(x|y=1) + p(y=0)p(x|y=0)} \\<br>&amp;= \frac{\phi \cdot \mathcal{N}(\mu _1, \Sigma _1)}{\phi \cdot \mathcal{N}(\mu _1, \Sigma) + (1-\phi) \cdot \mathcal{N}(\mu _0, \Sigma)} \\<br>&amp;= \frac{1}{1+\frac{1-\phi}{\phi} \frac{\mathcal{N}(\mu _0, \Sigma)}{ \mathcal{N}(\mu _1, \Sigma)}} \\<br>&amp;= \frac{1}{1+exp(-\theta ^Tx)}<br>\end{align}<br>$$<br>其中$\theta$为$\phi, \Sigma, \mu _0, \mu _1$的函数。这不就是logistic regression的$p(y=1|x)$吗，而logistic regression前面我们也提到过，属于discriminative algorithm。看起来像是互通的，哪种更好呢？其实，我们从$p(x|y)$为高斯分布可以推到$p(y|x)$为logistic函数，但是反过来就不行了，这说明<strong>GDA在数据的模型假设上比logistic regression更强</strong>，所以当两者的模型假设都是正确的时候，GDA模型更好，同时GDA需要的训练样本集可以更小（如果这个样本集满足GDA正态分布的假设）。相较而言，logistic regression的模型假设弱一些，所以会稳定一些。事实上，若$x|y=0 \sim Poisson(\lambda _0)$，同样也能推出$p(y|x)$为logistic函数。总而言之，对于数据分布的弱假设，logistic regression适应性强一些，稳定一些，当然预测能力也要弱一些。</p>
+<p>分类预测时，$y=\arg \max\limits_{c} [\log p(y=c|\theta) + \log p(x|y=c,\theta)]$，这其实就是Bayes rule分子取log而已，分母在给定$x$的情况下为定值。</p>
+<h4 id="Quadratic-discriminant-analysis-QDA"><a href="#Quadratic-discriminant-analysis-QDA" class="headerlink" title="Quadratic discriminant analysis (QDA)"></a>Quadratic discriminant analysis (QDA)</h4><p>将高斯分布代入$p(y=c|x,\theta)=\dfrac{p(y=c|\theta)p(x|y=c,\theta)}{\sum_{c’}{p(y=c’|\theta)p(x|y=c’,\theta)}}$中得(注意$p(y=c|\theta) = \pi_c$)，<br>$$<br>\begin{equation}<br>p(y=c|x,\theta)=\dfrac{\pi_c((2\pi)^{D}|\Sigma_c|)^{-\frac{1}{2}}\exp\left[-\frac{1}{2}(x-\mu_c)^T\Sigma_c^{-1}(x-\mu_c)\right]}{\sum_{c’}\pi_{c’}((2\pi)^{D}|\Sigma_{c’}|)^{-\frac{1}{2}}\exp\left[-\frac{1}{2}(x-\mu_{c’})^T\Sigma_{c’}^{-1}(x-\mu_{c’})\right]}<br>\end{equation}<br>$$<br>可以看到结果是关于$x$的二次函数(分母可看成常数项忽略)，这也是为什么叫<strong>Quadratic</strong> discriminant analysis。因而QDA分类边界为平方分类边界(quadratic decision surfaces)。</p>
+<h4 id="Linear-discriminant-analysis-LDA"><a href="#Linear-discriminant-analysis-LDA" class="headerlink" title="Linear discriminant analysis (LDA)"></a>Linear discriminant analysis (LDA)</h4><p>推导过程略。关键一点是，LDA假设前提是$\Sigma _c = \Sigma$，此时关于$x$的平方项$-\frac{1}{2} x^T \Sigma^{-1}x$与$c$无关，由此可降为与$x$一阶相关，具体为$-\frac{1}{2}(-\mu _c \Sigma ^{-1} x - x^T \Sigma^{-1} \mu _c)=\mu _c \Sigma ^{-1} x$。这导致，LDA的分类边界为线性边界(linear decision surfaces)。</p>
+<h4 id="Strategies-for-preventing-overfitting"><a href="#Strategies-for-preventing-overfitting" class="headerlink" title="Strategies for preventing overfitting"></a>Strategies for preventing overfitting</h4><p>使用MLE发生过拟合主要原因是协方差矩阵，如果两两之间都有一定的相关性，一个$n$维的协方差矩阵就对应$n(n+1)/2$个相关系数。所以引申出几个防过拟合的措施：</p>
+<ul>
+<li>使用对角矩阵，即假设特征都是条件独立的（两两相关系数为0），这时候等同于Naive Bayes classifier。</li>
+<li>使用同一个协方差矩阵，即$\Sigma _c = \Sigma$，这时候等同于LDA。这种手段称为<strong>parameter tying</strong>或<strong>parameter sharing</strong>。</li>
+<li>结合上述两者，这时候称为diagonal covariance LDA。</li>
+<li>使用MAP来估计协方差矩阵。</li>
+<li>在低维的子空间进行拟合。</li>
+</ul>
+<h2 id="Bayesian-statistics"><a href="#Bayesian-statistics" class="headerlink" title="Bayesian statistics"></a>Bayesian statistics</h2><h3 id="Summarizing-posterior-distributions"><a href="#Summarizing-posterior-distributions" class="headerlink" title="Summarizing posterior distributions"></a>Summarizing posterior distributions</h3><h4 id="MAP-estimation"><a href="#MAP-estimation" class="headerlink" title="MAP estimation"></a>MAP estimation</h4><p>本部分内容可参考<a href="https://engineering.purdue.edu/kak/Tutorials/Trinity.pdf" target="_blank" rel="noopener">https://engineering.purdue.edu/kak/Tutorials/Trinity.pdf</a></p>
+<p>不同于<strong>ML estimation</strong>，$\hat{\theta} _{ML}(x) = \arg \max\limits _{\theta}f(x|\theta)$，这里$f$是<em>likelihood</em>函数。</p>
+<p><strong>MAP estimation</strong>在ML的基础上加了prior，也就是假设$\theta$存在一个先验分布$g$，然后通过最大化后验概率来估计$\theta$，<br>$$<br>\hat{\theta} _{MAP}(x) = \arg \max\limits_{\theta} \frac{f(x|\theta)g(\theta)}{\int _{\vartheta}f(x|\vartheta)g(\vartheta)d\vartheta}=\arg \max\limits_{\theta}f(x|\theta)g(\theta)<br>$$<br>观察下可以发现$g(\theta)$为均匀分布时（即为常数），MAP estimation就变为了ML estimation。</p>
+<p>用MAP的好处是可以把问题降为优化问题，但这种point estimate方法缺陷也很明显：它返回的是定值，无法衡量估计的不确定性，由此导致我们的预测分布变得overconfident。但是<strong>Bayesian estimation</strong>不然，它能计算整个后验分布概率$p(\theta|x)$。</p>
+<p>我们再来看一下式子<br>$$<br>p(\theta|\mathcal{D}) = \frac{p(\mathcal{D}|\theta) \cdot p(\theta)}{p(\mathcal{D})} \\<br>posterior = \frac{likelihood \cdot prior}{evidence}<br>$$<br>其中$\theta$是要估计的参数，$\mathcal{D}$是Dataset。ML estimation仅考虑的是$p(\mathcal{D}|\theta)$，MAP estimation考虑了$p(\mathcal{D}|\theta) \cdot p(\theta)$，Bayesian estimation考虑的是$p(\theta|\mathcal{D})$完整的式子，不同于前两者，它没有$\arg \max$这个过程，但是考虑并计算$p(\mathcal{D}) = \int _{\theta} p(\mathcal{D}|\theta) p(\theta) d\theta$，由此得到$\theta$的分布$p(\theta|\mathcal{D})$。当我们通过这个分布去选择一个特定的$\theta$时（比如选择一个方差足够小的），就可以获知其置信程度。如果方差都很大，我们还可以断言通过这个Dataset不能找到$\theta$比较好的评估值。</p>
+<p>这里提到MAP estimation采用的是0-1损失函数，我的理解是，当定义了损失函数$L(\theta, \hat{\theta})$后，loss 为$\int L(\theta, \hat{\theta}) p(\theta|\mathcal{D}) d \theta$。若取$L(\theta, \hat{\theta}) = \mathbb{I}(\theta, \hat{theta})$即0-1损失函数时，鉴于0-1损失函数是“相同时为1，不同时为0”，要使损失函数最小，当然取$\hat{\theta}$为$p(\theta|\mathcal{D})$概率最大时的$theta$，即$\arg \max\limits _{\theta}p(\theta|\mathcal{D})$，这样计算得到的$\hat{\theta}$也称为<a href="https://en.wikipedia.org/wiki/Mode_(statistics" target="_blank" rel="noopener">众数</a>)(<strong>mode</strong>)。</p>
+<p>这个mode经常是untypical（不可靠的），解决的方法是<a href="http://www.cogsci.ucsd.edu/~ajyu/Teaching/Tutorials/bayes_dt.pdf" target="_blank" rel="noopener">Bayesian Decision Theory</a>。对于连续量$\theta$，通常选用平方损失函数$L(\theta,\hat{\theta}) = (\theta - \hat{\theta}) ^2$，对应的optimal estimator称为<strong>posterior mean</strong>。若$L(\theta, \hat{\theta}) = |\theta - \hat{\theta}|$，对应的optimal estimator称为<strong>posterior median</strong>。上面提到loss function为0-1损失函数时，对应的optimal estimator称为<strong>posterior mode</strong>。</p>
+<h4 id="Inference-for-a-difference-in-proportions"><a href="#Inference-for-a-difference-in-proportions" class="headerlink" title="Inference for a difference in proportions"></a>Inference for a difference in proportions</h4><p>这里提到一个<a href="http://www.johndcook.com/blog/2011/09/27/bayesian-amazon/" target="_blank" rel="noopener">Amazon Sellers</a>的例子，商家A有100个评论90个赞，商家B有2个评论0个赞，你会选哪个呢？看起来商家B好评率百分百，应该选商家B，但其实屁评论样本数太少可能说明不了什么。假设两个商家的好评率(原文reliabilities)分别为$\theta _1$与$\theta _2$，且先验概率服从均匀分布，即$\theta _i \sim {\rm Beta}(1,1)$，故后验概率分布为$p(\theta _1|\mathcal{D} _1) = {\rm Beta}(91, 11)$与$p(\theta _2|\mathcal{D} _2) = {\rm Beta}(3, 1)$，这里证明见<a href="https://engineering.purdue.edu/kak/Tutorials/Trinity.pdf" target="_blank" rel="noopener">Trinity.pdf–p24-26</a>。计算$p(\theta_1 &gt; \theta_2|\mathcal{D})$<br>$$<br>p(\theta_1&gt;\theta_2|\mathcal{D}) = \int_{0}^{1} \int_{0}^{1} \mathbb{I}(\theta_1&gt;\theta_2) {\rm Beta}(\theta_1|91, 11) {\rm Beta}(\theta_2|3, 1)d \theta_1 \theta_2<br>$$<br>计算结果为$p(\theta_1&gt;\theta_2|D) = 0.710$，这意味着商家A更更可靠！</p>
+<h4 id="Bayesian-Occam’s-razor"><a href="#Bayesian-Occam’s-razor" class="headerlink" title="Bayesian Occam’s razor"></a>Bayesian Occam’s razor</h4><p>“奥卡姆剃刀”意思是简约之法则，如果能达到同样效果，尽可能少浪费东西。在概率论中，如果一个假设不能增加理论的正确性，那么它的唯一副作用就是增加整个理论为错误的概率。</p>
+<h3 id="Priors"><a href="#Priors" class="headerlink" title="Priors"></a>Priors</h3><p>贝叶斯统计最大的争议是对priors的依赖，下面介绍几个选择priors的方法：</p>
+<ul>
+<li>uninformative priors: 如果我们对$\theta$的先验没有很强的需求，用一个“万金油”来套</li>
+<li>robust priors: 如果我们对$\theta$信心不大，要确保减少它对模型的影响，可以使用robust priors (Insua and Ruggeri 2000)</li>
+<li>Mixtures of conjugate priors: 由于robust priors计算代价比较高，由此引入conjugate priors，但不太robust。mixtures of conjugate priors能比较好地平衡这种计算代价与灵活性。</li>
+</ul>
+<h2 id="Frequentist-statistics"><a href="#Frequentist-statistics" class="headerlink" title="Frequentist statistics"></a>Frequentist statistics</h2><h3 id="Frequentist-decision-theory"><a href="#Frequentist-decision-theory" class="headerlink" title="Frequentist decision theory"></a>Frequentist decision theory</h3><p>参考<a href="https://people.eecs.berkeley.edu/~jordan/courses/260-spring10/lectures/lecture3.pdf" target="_blank" rel="noopener">Stat260: Bayesian Modeling and Inference</a></p>
+<p>频率学派没有posterior一说。定义<strong>frequentist risk/loss</strong> 为<br>$$<br>R(\theta, \delta) = E _{\theta}l(\theta, \delta(X))<br>$$<br>这个期望的取值遍历数据$X$，$\theta$为估计值。</p>
+<p>我们熟悉的Squared-error loss即取loss function $l(\theta, \delta(X)) = (\theta - \delta(X)) ^2$，得<br>$$<br>\begin{align}<br>R(\theta, \delta) &amp;= E _{\theta}l(\theta, \delta(X)) \\<br>&amp;= E _{\theta}(\theta - \delta(X)) ^2 \\<br>&amp;= E _{\theta}(\theta - E_{\theta}\delta(X) + E_{\theta}\delta(X) - \delta(X)) ^2 \\<br>&amp;=\underbrace { (\theta - E_{\theta}\delta(X))^2}_{Bias^2} + \underbrace{E_{\theta}(\delta(X) - E_{\theta}\delta(X))^2}_{Variance}<br>\end{align}<br>$$</p>
+<h2 id="Linear-Regression"><a href="#Linear-Regression" class="headerlink" title="Linear Regression"></a>Linear Regression</h2><h3 id="Representation"><a href="#Representation" class="headerlink" title="Representation"></a>Representation</h3><p>linear regression假设残差呈正态分布，即<br>$$<br>p(y|x, \theta) = \mathcal{N}(y|\omega^Tx, \delta^2)<br>$$<br>linear regression也可以用来处理non-linear的关系，<br>$$<br>p(y|x, \theta) = \mathcal{N}(y|\omega^T \phi(x), \delta^2)<br>$$<br>例如可以取$\phi(x) = (1, x, \cdots, x^d)$，由于与系数$\omega$的关系仍为线性，所以还是称为Linear Regression。</p>
+<h3 id="MLE"><a href="#MLE" class="headerlink" title="MLE"></a>MLE</h3><p>最小化 <strong>negative log likelihood (NLL)</strong> 等价于MLE，<br>$$<br>NLL(\theta) \triangleq -l(\theta) = -\log(\mathcal{D}|\theta)<br>$$<br>变成最小化的好处是许多函数库中的最优化函数都是找到函数的最小值。</p>
+<p>对于linear regression来说（注意残差满足正态分布），log likelihood函数为<br>$$<br>\begin{align}<br>l(\theta) &amp;= \sum\limits_{i=1}^{N}\log[\frac{1}{\sqrt{2\pi}\sigma} \exp(-\frac{1}{2\sigma^2}(y_i - \omega^Tx_i)^2)] \\<br>&amp;= -\frac{1}{2\sigma^2}{\rm RSS}(\omega) - \frac{N}{2} \log(2\pi \sigma^2)<br>\end{align}<br>$$<br>RSS (Residual Sum of Squares) 即为<br>$$<br>{\rm RSS}(\omega) \triangleq \sum\limits_{i=1}^{N}(y_i - \omega^T x_i)^2<br>$$<br>我们可以看到MLE即为minimize RSS，这种方法也称为<strong>least squares</strong>。丢掉$l(\theta)$中的常数项，可以得到<br>$$<br>{\rm NLL}(\omega) = \frac{1}{2}\sum\limits_{i=1}^{N}(y_i - \omega^T x_i)^2<br>$$<br>下面介绍最小化NLL常用的两种方法：OLS与SGD。</p>
+<h4 id="OLS"><a href="#OLS" class="headerlink" title="OLS"></a>OLS</h4><p>在数据规模小于1000时，我们能直接计算出<br>$$<br>\hat{\omega}_{OLS} = (X^TX)^{-1} X^Ty<br>$$<br>这个$\hat{\omega}_{OLS}$称为<strong>ordinary least squares (OLS)</strong>。</p>
+<p>证明需要用到矩阵的一些基础知识，可以参考<a href="https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf" target="_blank" rel="noopener">matrix cookbook</a>与<a href="http://files.cnblogs.com/files/leoleo/matrix_rules.pdf" target="_blank" rel="noopener">矩阵、向量求导法则</a>，只要记住这些规则是元素逐次求导的简化形式就很好理解了。注意，原文中的证明到$tr$那一步我认为是比较莫名的，可以省略那两步。以及中间过程少了$1/N$，虽然对结果没什么影响。</p>
+<p><strong>Geometric interpretation</strong></p>
+<p>几何解释就是，如何让向量$y$到向量$(x_1, x_2, \cdots, x_n)$生成的线性生成空间${\rm span}(X) = {\omega_1 x_1 + \cdots + \omega_n x_n | \omega_1, \cdots, \omega_n \in K}$的距离最小，这从${\rm NLL}(\omega) = \frac{1}{2}(y-X\omega)^T (y - X\omega)$可以看出。距离最小，从欧式空间看，不就是投影距离吗，$\hat{y}$即为投影点。</p>
+<h4 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h4><p>当数据规模很大时，Stochastic Gradient descent (SGD)是比较有效的手段。gradient descent大家应该都很熟悉，SGD唯一的区别是每一次迭代不是计算完整的梯度(true gradient)，而是随机取一个关于$\omega_i$的梯度(the gradient at a single example)，以提高收敛速度。</p>
+<h3 id="Ridge-regression-MAP"><a href="#Ridge-regression-MAP" class="headerlink" title="Ridge regression (MAP)"></a>Ridge regression (MAP)</h3><p>以前理解的ridge regression都是在于添加一个structural penalty，这里给出了ridge regression的Bayesian interpretation: 添加一个关于$\omega$的的正态先验分布。</p>
+<p>还有一个观点是，将这个penalty看成假数据<br>$$<br>\begin{align}<br>J(\omega) &amp;= \frac{1}{N} \sum\limits_{i=1}^{N}(y_i - (\omega_0 + \omega^T x_i))^2 + \lambda \sum\limits_{j=1}^{p}\omega_j^2 \\<br>&amp;=  \frac{1}{N} \sum\limits_{i=1}^{N}(y_i - (\omega_0 + \omega^T x_i))^2 + \sum\limits_{j=1}^{p}(0-\sqrt{\lambda}\omega_j)^2<br>\end{align}<br>$$<br>这样就是对一个新的dataset进行linear regression。</p>
+<h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2><h3 id="Representation-1"><a href="#Representation-1" class="headerlink" title="Representation"></a>Representation</h3><p>Logistic regression可以是binomial或multinomial。binomial logistic regression形式如下<br>$$<br>p(y|x, \omega) = {\rm Ber}(y|sigmoid(\omega^T x))<br>$$<br>其中$\omega$与$x$为extended vector，即$\omega = (b, \omega_1, \omega_2, \cdots, \omega_D), x = (1, x_1, x_2, \cdots, x_D)$。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/26/QQ-Plot/" rel="next" title="Q-Q' Plot">
+                <i class="fa fa-chevron-left"></i> Q-Q' Plot
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/26/hexo-setting/" rel="prev" title="hexo的一些配置">
+                hexo的一些配置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="daiyu" />
+            
+              <p class="site-author-name" itemprop="name">daiyu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/qqdaiyu55" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="qqdaiyu55@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/qqdaiyu55" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Probability"><span class="nav-number">2.</span> <span class="nav-text">Probability</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Monte-Carlo-integration"><span class="nav-number">2.1.</span> <span class="nav-text">Monte Carlo integration</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mutual-information"><span class="nav-number">2.2.</span> <span class="nav-text">Mutual information</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Frequentists-vs-Bayesians"><span class="nav-number">2.3.</span> <span class="nav-text">Frequentists vs. Bayesians</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Generative-models-for-discrete-data"><span class="nav-number">3.</span> <span class="nav-text">Generative models for discrete data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Generative-vs-discriminative-classifiers"><span class="nav-number">3.1.</span> <span class="nav-text">Generative vs discriminative classifiers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gaussian-Models"><span class="nav-number">4.</span> <span class="nav-text">Gaussian Models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basics"><span class="nav-number">4.1.</span> <span class="nav-text">Basics</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MLE-for-a-MVN"><span class="nav-number">4.1.1.</span> <span class="nav-text">MLE for a MVN</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Maximum-entropy-derivation-of-the-Gaussian"><span class="nav-number">4.1.2.</span> <span class="nav-text">Maximum entropy derivation of the Gaussian</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gaussian-discriminant-analysis"><span class="nav-number">4.2.</span> <span class="nav-text">Gaussian discriminant analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Quadratic-discriminant-analysis-QDA"><span class="nav-number">4.2.1.</span> <span class="nav-text">Quadratic discriminant analysis (QDA)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Linear-discriminant-analysis-LDA"><span class="nav-number">4.2.2.</span> <span class="nav-text">Linear discriminant analysis (LDA)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Strategies-for-preventing-overfitting"><span class="nav-number">4.2.3.</span> <span class="nav-text">Strategies for preventing overfitting</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bayesian-statistics"><span class="nav-number">5.</span> <span class="nav-text">Bayesian statistics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Summarizing-posterior-distributions"><span class="nav-number">5.1.</span> <span class="nav-text">Summarizing posterior distributions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MAP-estimation"><span class="nav-number">5.1.1.</span> <span class="nav-text">MAP estimation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inference-for-a-difference-in-proportions"><span class="nav-number">5.1.2.</span> <span class="nav-text">Inference for a difference in proportions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bayesian-Occam’s-razor"><span class="nav-number">5.1.3.</span> <span class="nav-text">Bayesian Occam’s razor</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Priors"><span class="nav-number">5.2.</span> <span class="nav-text">Priors</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Frequentist-statistics"><span class="nav-number">6.</span> <span class="nav-text">Frequentist statistics</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Frequentist-decision-theory"><span class="nav-number">6.1.</span> <span class="nav-text">Frequentist decision theory</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-Regression"><span class="nav-number">7.</span> <span class="nav-text">Linear Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Representation"><span class="nav-number">7.1.</span> <span class="nav-text">Representation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MLE"><span class="nav-number">7.2.</span> <span class="nav-text">MLE</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#OLS"><span class="nav-number">7.2.1.</span> <span class="nav-text">OLS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SGD"><span class="nav-number">7.2.2.</span> <span class="nav-text">SGD</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Ridge-regression-MAP"><span class="nav-number">7.3.</span> <span class="nav-text">Ridge regression (MAP)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistic-Regression"><span class="nav-number">8.</span> <span class="nav-text">Logistic Regression</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Representation-1"><span class="nav-number">8.1.</span> <span class="nav-text">Representation</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">daiyu</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

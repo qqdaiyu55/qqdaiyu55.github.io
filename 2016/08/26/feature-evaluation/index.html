@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="机器学习性能评估指标  Precision and Recall 列一下几个计算公式$$Precision=\frac{TP}{TP+FP} \\Recall=\frac{TP}{TP+FN} \\F1=\frac{2}{1/P+1/R} \\TP-Rate=\frac{TP}{TP+FN} \\FP-Rate=\frac{FP}{FP+TN}$$">
+<meta name="keywords" content="Machine Learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习性能评估指标">
+<meta property="og:url" content="http://qqdaiyu55.github.io/2016/08/26/feature-evaluation/index.html">
+<meta property="og:site_name" content="Mr.Thunder">
+<meta property="og:description" content="机器学习性能评估指标  Precision and Recall 列一下几个计算公式$$Precision=\frac{TP}{TP+FP} \\Recall=\frac{TP}{TP+FN} \\F1=\frac{2}{1/P+1/R} \\TP-Rate=\frac{TP}{TP+FN} \\FP-Rate=\frac{FP}{FP+TN}$$">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://7xjbdi.com1.z0.glb.clouddn.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0.png">
+<meta property="og:image" content="http://i.imgur.com/rcxGmZt.png">
+<meta property="og:image" content="http://i.imgur.com/ZojWNBc.jpg">
+<meta property="og:image" content="http://i.imgur.com/j1xCDP1.png">
+<meta property="og:updated_time" content="2016-08-27T06:27:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习性能评估指标">
+<meta name="twitter:description" content="机器学习性能评估指标  Precision and Recall 列一下几个计算公式$$Precision=\frac{TP}{TP+FP} \\Recall=\frac{TP}{TP+FN} \\F1=\frac{2}{1/P+1/R} \\TP-Rate=\frac{TP}{TP+FN} \\FP-Rate=\frac{FP}{FP+TN}$$">
+<meta name="twitter:image" content="http://7xjbdi.com1.z0.glb.clouddn.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://qqdaiyu55.github.io/2016/08/26/feature-evaluation/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>机器学习性能评估指标 | Mr.Thunder</title>
+  
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72707845-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-72707845-1');
+</script>
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mr.Thunder</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qqdaiyu55.github.io/2016/08/26/feature-evaluation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="daiyu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.Thunder">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">机器学习性能评估指标
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-08-26 20:04:42" itemprop="dateCreated datePublished" datetime="2016-08-26T20:04:42+08:00">2016-08-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2016-08-27 14:27:54" itemprop="dateModified" datetime="2016-08-27T14:27:54+08:00">2016-08-27</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>机器学习性能评估指标</p>
+<p><img src="http://7xjbdi.com1.z0.glb.clouddn.com/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%80%A7%E8%83%BD%E8%AF%84%E4%BC%B0.png" alt=""></p>
+<h2 id="Precision-and-Recall"><a href="#Precision-and-Recall" class="headerlink" title="Precision and Recall"></a>Precision and Recall</h2><p><img src="http://i.imgur.com/rcxGmZt.png" alt=""></p>
+<p>列一下几个计算公式<br>$$<br>Precision=\frac{TP}{TP+FP} \\<br>Recall=\frac{TP}{TP+FN} \\<br>F1=\frac{2}{1/P+1/R} \\<br>TP-Rate=\frac{TP}{TP+FN} \\<br>FP-Rate=\frac{FP}{FP+TN}<br>$$<br><a id="more"></a></p>
+<p>准确率$Precision$意味着“预测为正例的有多少是对的“，召回率$Recall$意味着“正例里你的预测覆盖了多少”。$Precision$是针对<strong>预测结果</strong>而言的，$Recall$是针对原来的样本而言的。举个具体例子，在信息检索领域，精确率和召回率又被称之为<strong>查准率</strong>和<strong>查全率</strong>。</p>
+<blockquote>
+<p>下面是两个场景：</p>
+<ol>
+<li><p>地震的预测</p>
+<p>对于地震的预测，我们希望的是Recall非常高，也就是说每次地震我们都希望预测出来。这个时候我们可以牺牲Precision。情愿发出1000次警报，把10次地震都预测正确了；也不要预测100次对了8次漏了两次。</p>
+</li>
+<li><p>嫌疑人定罪</p>
+<p>基于不错怪一个好人的原则，对于嫌疑人的定罪我们希望是非常准确的。及时有时候放过了一些罪犯（Recall低），但也是值得的。</p>
+</li>
+</ol>
+</blockquote>
+<p>$F1$值就是$Precision$与$Recall$的调和均值，这意味着它认为$Precision$与$Recall$的权重是一样的，但其实很多场景上权重并不一样，其一般化形式为<br>$$<br>F-Measure=\frac{(1+\beta)^{2}\cdot Precision \cdot Recall}{\beta ^{2} \cdot (Precision + Recall)}<br>$$</p>
+<h2 id="ROC-and-PRC"><a href="#ROC-and-PRC" class="headerlink" title="ROC and PRC"></a>ROC and PRC</h2><p>直观上，$TPR (TP-Rate)$代表能将正例分对的概率，$FPR$代表讲负例错分为正例的概率，ROC曲线也就描绘了分类器在<strong>TPR</strong> (真正率) 与<strong>FPR</strong> (假正率) 间的trade-off。</p>
+<p>下面这张图是ROC (receiver operating characteristic curve) 曲线，如果ROC是光滑的，那么基本可以判断没有太大的overfitting（比如图中0.2到0.4可能就有问题，但是样本太少了），这个时候调模型可以只看<strong>AUC</strong>。AUC (Area Under Curve) 是曲线下的面积，一般认为面积越大模型越好。</p>
+<ul>
+<li>$AUC=1$，<strong>完美分类器</strong>，采用这个预测模型时，不管设定什么阈值都能得出完美预测。绝大多数预测的场合，不存在完美分类器。</li>
+<li>$0.5&lt;AUC&lt;1$，优于<strong>随机猜测</strong>。这个分类器（模型）妥善设定阈值的话，能有预测价值。</li>
+<li>$AUC=0.5$，跟<strong>随机猜测一样</strong>（例：丢铜板），模型没有预测价值。</li>
+<li>$AUC&lt;0.5$，比<strong>随机猜测</strong>还差；但只要总是反预测而行，就优于随机猜测，因此不存在$AUC&lt;0.5$ 的情况。</li>
+</ul>
+<p><img src="http://i.imgur.com/ZojWNBc.jpg" alt="ROC"></p>
+<p>在正负样本分布得极不均匀(highly skewed datasets)的情况下，PRC比ROC能更有效地反应分类器的好坏。</p>
+<p><img src="http://i.imgur.com/j1xCDP1.png" alt=""></p>
+<h2 id="MAE-and-MSE"><a href="#MAE-and-MSE" class="headerlink" title="MAE and MSE"></a>MAE and MSE</h2><h4 id="MAE-Mean-Absolute-Error"><a href="#MAE-Mean-Absolute-Error" class="headerlink" title="MAE (Mean Absolute Error)"></a>MAE (Mean Absolute Error)</h4><p>平均绝对值误差又被称为$l_1$范数损失，<br>$$<br>{\rm MAE}(y, \hat{y})=\frac{1}{n_{\rm samples}}\sum\limits_{i=1}^{n_{\rm samples}}|y_i-\hat{y}_i|<br>$$</p>
+<h4 id="MSE-Mean-Squared-Error"><a href="#MSE-Mean-Squared-Error" class="headerlink" title="MSE (Mean Squared Error)"></a>MSE (Mean Squared Error)</h4><p>平均平方误差又被称为$l_2$范数损失，<br>$$<br>{\rm MSE}(y, \hat{y})=\frac{1}{n_{\rm samples}}\sum\limits_{i=1}^{n_{\rm samples}}(y_i-\hat{y}_i)^2<br>$$<br>参考：</p>
+<p>[1] <a href="http://charlesx.top/2016/03/Model-Performance/" target="_blank" rel="noopener">http://charlesx.top/2016/03/Model-Performance/</a></p>
+<p>[2] <a href="https://argcv.com/articles/1036.c" target="_blank" rel="noopener">https://argcv.com/articles/1036.c</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/26/hexo-setting/" rel="next" title="hexo的一些配置">
+                <i class="fa fa-chevron-left"></i> hexo的一些配置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/08/frp/" rel="prev" title="FRP helps you expose a local server behind a NAT">
+                FRP helps you expose a local server behind a NAT <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="daiyu" />
+            
+              <p class="site-author-name" itemprop="name">daiyu</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/qqdaiyu55" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="qqdaiyu55@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://twitter.com/qqdaiyu55" target="_blank" title="Twitter"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Precision-and-Recall"><span class="nav-number">1.</span> <span class="nav-text">Precision and Recall</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ROC-and-PRC"><span class="nav-number">2.</span> <span class="nav-text">ROC and PRC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAE-and-MSE"><span class="nav-number">3.</span> <span class="nav-text">MAE and MSE</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MAE-Mean-Absolute-Error"><span class="nav-number">3.0.1.</span> <span class="nav-text">MAE (Mean Absolute Error)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MSE-Mean-Squared-Error"><span class="nav-number">3.0.2.</span> <span class="nav-text">MSE (Mean Squared Error)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">daiyu</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
