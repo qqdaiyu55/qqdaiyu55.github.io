@@ -349,7 +349,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-03-13 00:11:31" itemprop="dateModified" datetime="2018-03-13T00:11:31+08:00">2018-03-13</time>
+                <time title="Modified: 2018-12-05 23:05:06" itemprop="dateModified" datetime="2018-12-05T23:05:06+08:00">2018-12-05</time>
               
             
           </span>
@@ -410,10 +410,10 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Note</strong>: you’d better do not try other version bundles like tensorflow 1.6.0 + cuda 9.1, I have tried it, and some errors happend. The latest cuda and cudnn version are 9.0 and 7.0.4 for tensorflow 1.6.0</p>
+<p><strong>Requirements for Tensorflow</strong> (official): <a href="https://www.tensorflow.org/install/gpu" target="_blank" rel="noopener">https://www.tensorflow.org/install/gpu</a></p>
 <h2 id="install-cuda-v9-0"><a href="#install-cuda-v9-0" class="headerlink" title="install cuda v9.0"></a>install cuda v9.0</h2><p>Do <a href="http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#pre-installation-actions" target="_blank" rel="noopener">pre-installation actions</a> first.</p>
 <p>Install cuda using apt-get (easist way)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb</span><br><span class="line">wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb</span><br><span class="line">sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y cuda</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i cuda-repo-ubuntu1604_9.0.176-1_amd64.deb</span><br><span class="line">wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_9.0.176-1_amd64.deb</span><br><span class="line">sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/7fa2af80.pub</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install -y cuda-9-0</span><br></pre></td></tr></table></figure>
 <p>You can install driver 390 with</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install -y nvidia-390</span><br></pre></td></tr></table></figure>
 <p>To uninstall cuda,</p>
@@ -427,6 +427,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf cudnn-9.0-linux-x64-v7.tgz</span><br><span class="line"></span><br><span class="line">sudo cp cuda/include/cudnn.h /usr/local/cuda/include</span><br><span class="line">sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64</span><br><span class="line">sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*</span><br></pre></td></tr></table></figure>
 <p>Check cudnn version</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2</span><br></pre></td></tr></table></figure>
+<p>If you get error like <code>ImportError: libcudart.so.7.0: cannot open shared object file: No such file or directory</code> when you run TensorFlow, just export the environment value</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=/usr/<span class="built_in">local</span>/cuda/lib64:<span class="variable">$LD_LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
 <h2 id="install-libcupti-dev-library"><a href="#install-libcupti-dev-library" class="headerlink" title="install libcupti-dev library"></a>install libcupti-dev library</h2><p><em>Taken from tensorflow install guide</em></p>
 <p>The libcupti-dev library, which is the NVIDIA CUDA Profile Tools Interface. This library provides advanced profiling support. To install this library, issue the following command for CUDA Toolkit &gt;= 8.0:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install cuda-command-line-tools</span><br></pre></td></tr></table></figure>
